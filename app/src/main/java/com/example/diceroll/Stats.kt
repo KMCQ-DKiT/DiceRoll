@@ -1,5 +1,6 @@
 package com.example.diceroll
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -7,12 +8,13 @@ import android.widget.Button
 import android.widget.TextView
 
 class Stats : AppCompatActivity() {
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_stats)
 
 
-        val homeButton: Button = findViewById(R.id.button5)
+        val homeButton: Button = findViewById(R.id.button6)
         homeButton.setOnClickListener { finish() }
 
 
@@ -27,18 +29,21 @@ class Stats : AppCompatActivity() {
         Log.d("SpinMessage", "$totalLossMessage")
 
 
-//        val spinView = findViewById<TextView>(R.id.spinView).apply {
-//            text = totalRollMessage.toString()
-//        }
-//
-//        val winView = findViewById<TextView>(R.id.spinView2).apply {
-//            text = totalWinMessage.toString()
-//
-//        }
-//
-//        val winrationView = findViewById<TextView>(R.id.spinView3).apply {
-//            text = totalLossMessage.toString()
-//        }
+        val textView = findViewById<TextView>(R.id.textView).apply {
+            text = totalRollMessage.toString()
+        }
+
+        val winView = findViewById<TextView>(R.id.textView2).apply {
+            text = totalWinMessage.toString()
+
+        }
+
+        val winrationView = findViewById<TextView>(R.id.textView3).apply {
+            text = totalLossMessage.toString()
+        }
+        val winPercentage = findViewById<TextView>(R.id.textView4).apply {
+            text = winPercentageMessage.toString()
+        }
 
     }
 }

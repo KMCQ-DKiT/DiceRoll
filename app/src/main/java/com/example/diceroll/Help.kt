@@ -13,7 +13,7 @@ class Help : AppCompatActivity()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_help)
 
-        val mainButton: ImageButton = findViewById(R.id.imageButton)
+        val mainButton: Button = findViewById(R.id.button2)
         mainButton.setOnClickListener { finish() }
     }
 

@@ -18,11 +18,13 @@ const val winPercentageMessage = "Win Percentage"
 class MainActivity : AppCompatActivity() {
     var totalRolls=0
     var totalWins=0
-    var totalLoss=-1
+    var totalLoss=0
     var winPercentage=0.0;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
 
 
         val helpButton: Button = findViewById(R.id.button3)
@@ -30,18 +32,18 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, Help::class.java).apply{}
             startActivity(intent) }
 
-//        val statsButton: Button = findViewById(R.id.button4)
-//
-//        statsButton.setOnClickListener {
-//            val intent2 = Intent(this, Stats::class.java).apply{
-//                putExtra(totalSpinMessage,totalRolls)
-//                putExtra(totalWinsMessage, totalWins)
-//                putExtra(totalLossMessage, totalLoss)
-//                putExtra(winPercentageMessage, winPercentage)
-//            }
-//            startActivity(intent2)
-//
-//        }
+        val statsButton: Button = findViewById(R.id.button4)
+
+        statsButton.setOnClickListener {
+            val intent2 = Intent(this, Stats::class.java).apply{
+                putExtra(totalRollMessage,totalRolls)
+                putExtra(totalWinsMessage, totalWins)
+                putExtra(totalLossMessage, totalLoss)
+                putExtra(winPercentageMessage, winPercentage)
+            }
+            startActivity(intent2)
+
+        }
 
         val rollButton: Button = findViewById(R.id.button)
         rollButton.setOnClickListener {
@@ -69,22 +71,22 @@ class MainActivity : AppCompatActivity() {
 
 
         val drawableResource1 = when (diceRoll) {
-            1 -> R.drawable.dice_1
-            2 -> R.drawable.dice_2
-            3 -> R.drawable.dice_3
-            else -> {R.drawable.dice_1}
+            1 -> R.drawable.bird
+            2 -> R.drawable.frog
+            3 -> R.drawable.lion
+            else -> {R.drawable.penguin}
         }
         val drawableResource2 = when (diceRoll2) {
-            1 -> R.drawable.dice_1
-            2 -> R.drawable.dice_2
-            3 -> R.drawable.dice_3
-            else -> {R.drawable.dice_2}
+            1 -> R.drawable.bird
+            2 -> R.drawable.frog
+            3 -> R.drawable.lion
+            else -> {R.drawable.penguin}
         }
         val drawableResource3 = when (diceRoll3) {
-            1 -> R.drawable.dice_1
-            2 -> R.drawable.dice_2
-            3 -> R.drawable.dice_3
-            else -> {R.drawable.dice_3}
+            1 -> R.drawable.bird
+            2 -> R.drawable.frog
+            3 -> R.drawable.lion
+            else -> {R.drawable.penguin}
         }
 
         diceImage1.setImageResource(drawableResource1)
@@ -102,7 +104,7 @@ class MainActivity : AppCompatActivity() {
             winLose.setImageResource(R.drawable._60_f_131419939_uh5audnnojgivepfgweswogzmxbdugwe)
             totalLoss +=1
         }
-        winPercentage = (((totalWins.toDouble() / totalRolls)))
+        winPercentage = (((totalWins.toDouble() / totalRolls) * 100))
 
         Log.d(totalRollMessage, totalRolls.toString())
         Log.d(totalWinsMessage, totalWins.toString())
